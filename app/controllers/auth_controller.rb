@@ -3,18 +3,18 @@ class AuthController < ApplicationController
     user = User.find_by(email: params[:email])
       
     if user && user.authenticate(params[:password])
-      token = JWT.encode({user_id: user.id}, "password")
+      token = encode_token(user.id)
 
       render json: {
         status: 200,
         data: {
           user: user.user_obj,
           token: token
-      }
+        }
     else
       render json: { 
         status: 401,
-        errors: ['no such user', 'verify credentials and try again or signup']
+        errors: ['No such user', 'Verify credentials, and try again']
       }
     end
   end
