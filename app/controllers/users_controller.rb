@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
   def create
-    user = User.new(
-      email: params[:email],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation]
-    )
+    byebug
+    user = User.new(user_create_params[:user])
 
     if user.save
       token = encode_token(user.id)
@@ -51,12 +48,16 @@ class UsersController < ApplicationController
 
   private
 
+  def user_create_params
+    params.permit(user:{})
+  end
+  
   def user_update_params
     params.permit(
-      username,
-      sleep,
-      sleep_duration,
-      wake
+      :username,
+      :sleep,
+      :sleep_duration,
+      :wake
     )
   end
 

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[create show update destroy]
   resources :flights, only: %i[create show update destroy]
 
+  get '/locations', to: 'locations#index'
+
   post '/login', to: 'auth#create'
   get '/auto_login', to: 'auth#auto_login'
 end

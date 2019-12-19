@@ -7,7 +7,12 @@ class User < ApplicationRecord
 
   def user_obj
     {
-      'flights': self.flights
+      'user': {
+        id: self.id,
+        'flights': self.flights,
+        username: self.username,
+        email: self.email
+      }
     }
   end
 end
