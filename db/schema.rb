@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "flights", force: :cascade do |t|
     t.time "flight_time"
-    t.datetime "arrival_time"
     t.datetime "departure_time"
+    t.datetime "arrival_time"
     t.bigint "origin_id"
     t.bigint "destination_id"
     t.bigint "user_id", null: false
@@ -51,9 +51,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.time "sleep"
-    t.time "sleep_duration"
-    t.time "wake"
+    t.time "bed_time"
+    t.time "wake_up_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

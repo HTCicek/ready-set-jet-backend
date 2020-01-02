@@ -7,10 +7,9 @@ class AuthController < ApplicationController
 
       render json: {
         status: 200,
-        data: {
-          user: user.user_obj,
-          token: token
-        }
+        user: user.user_obj,
+        token: token
+      }
     else
       render json: { 
         status: 401,
@@ -20,12 +19,12 @@ class AuthController < ApplicationController
   end
 
   def auto_login
-    user = User.find(session_user)
+    user = session_user
 
     if user
       render json: {
         status: 200,
-        data: user.user_obj
+        user: user.user_obj
       }
     else
       render json: {
