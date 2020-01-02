@@ -8,7 +8,7 @@ class User < ApplicationRecord
   def user_obj
     {
       id: self.id,
-      'flights': self.flights.map(&:flight_obj),
+      'flights': self.flights.map(&:flight_obj), # TODO, sort these by departure date
       username: self.username,
       email: self.email,
       bed_time: self.bed_time,
