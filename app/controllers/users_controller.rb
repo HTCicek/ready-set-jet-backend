@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def create
-    byebug
     user = User.new(user_create_params[:user])
 
     if user.save
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
       user.save
       render json: {
           status: 202,
-          data: user.user_obj
+          user: user.user_obj
       }
     else
       render json: error_json(user)
@@ -55,9 +54,8 @@ class UsersController < ApplicationController
   def user_update_params
     params.permit(
       :username,
-      :sleep,
-      :sleep_duration,
-      :wake
+      :bed_time,
+      :wake_up_time
     )
   end
 

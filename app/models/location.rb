@@ -8,6 +8,9 @@ class Location < ApplicationRecord
       name: self.name,
       city: self.city,
       country: self.country,
+      iata: self.iata,
+      latitude: self.latitude,
+      longitude: self.longitude,
       timezone: self.timezone,
       dst: self.dst,
       tz_olson: self.tz_olson

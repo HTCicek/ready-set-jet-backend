@@ -4,9 +4,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :username
       t.string :email
       t.string :password_digest
-      t.time :sleep
-      t.time :sleep_duration
-      t.time :wake
+      t.time :bed_time
+      t.time :wake_up_time
 
       t.timestamps
     end

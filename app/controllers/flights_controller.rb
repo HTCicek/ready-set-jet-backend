@@ -1,18 +1,25 @@
 class FlightsController < ApplicationController
   def create
-    flight = Flight.new(new_flights_params)
-
-    render json: {
-      status: 200,
-      message: "You've hit the create controller"
-    }
+    # byebug
+    user = session_user
+    flight = user.flights.create(flight_create_params[:flight])
+    if flight.valid?
+      render json: {
+        status: 200,
+        flight: flight.flight_obj
+      }
+    else
+      render json: {
+        errors: flight.errors.full_messages
+      }
+    end
   end
 
 
   private
 
-  def new_flights_params
-    params.permit[whatever the fuck]
+  def flight_create_params
+    params.permit(flight: {})
   end
   
 end
